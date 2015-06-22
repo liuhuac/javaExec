@@ -15,7 +15,7 @@ public class JavaRun {
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		if(3>args.length) {
+		if(!(3==args.length||4==args.length)) {
 			printUsage();
 			return;
 		}
@@ -27,7 +27,7 @@ public class JavaRun {
 		if(4==args.length){
 			outPath = args[3];
 		} else {
-			outPath = "./";
+			outPath = System.getProperty("user.dir") + "/";
 		}
 		
 		if(!appPath.endsWith("/")){
@@ -57,7 +57,7 @@ public class JavaRun {
             String app = appPath + parts[0];
             Random rd = new Random();
             int numbers = 100000 + (int)(rd.nextFloat() * 899900);
-            String ofName = parts[0] + "." + String.format("%5d", numbers);
+            String ofName = host.substring(0, host.indexOf('.')) + "." + parts[0] + "." + String.format("%5d", numbers);
             cmd = "ssh " + host + " " + app + " > " + outPath + ofName;
             System.out.println(cmd);
             Runtime.getRuntime().exec(cmd);
