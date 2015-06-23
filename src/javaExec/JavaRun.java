@@ -35,7 +35,7 @@ public class JavaRun {
 		}
 		
 		if(!outPath.endsWith("/")){
-			outPath = appPath + "/";
+			outPath = outPath + "/";
 		}
 		
 		List<String> nodeNames = new ArrayList<String>();
@@ -60,7 +60,7 @@ public class JavaRun {
             String ofName = host.substring(0, host.indexOf('.')) + "." + parts[0] + "." + String.format("%5d", numbers);
             cmd = "ssh " + host + " " + app + " > " + outPath + ofName;
             System.out.println(cmd);
-            Runtime.getRuntime().exec(cmd);
+            //Runtime.getRuntime().exec(cmd);
         }
 		brMap.close();
 
